@@ -11,15 +11,19 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="products.css" />
+    <link rel="stylesheet" href="style.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <script src="products.js" defer></script>
+       <script src="products.js" defer>
+       </script>
+       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
   </head>
   <body>
+    <div id="navbar"></div>
     <div id="container">
       <div id="cart"  class="cartHide">
         <div class="cart-header">
@@ -34,179 +38,18 @@
           <div class="totDiv">Total Amount:</div>
           <div class="totalPrice"></div>
         </div>
-        <div class="pay"><button class="payBtn">Pay</button></div>
+        <div class="pay"><button id = "payBtn" onclick="pay(event)">Pay</button></div>
        </div>
       </div>
   
     
       <div id="outerContainer">
     <div id="cardContainer">
-      <!-- <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="imgContainer">
-          <img src="./laptop.jpg" alt="image" />
-        </div>
-        <div class="info">
-          <div class="desc">
-            <h6>UltraBook Pro X</h6>
-            <p>
-              Cutting-edge performance with Intel Core i9, 32GB RAM, and a 1TB
-              SSD in a sleek, lightweight design.
-            </p>
-          </div>
-          <div class="bottom">
-            <div class="price">$114</div>
-            <button>Add to cart</button>
-          </div>
-        </div>
-      </div>
-       -->
+     
       </div>
       </div>
     </div>
+    
     
   </body>
  

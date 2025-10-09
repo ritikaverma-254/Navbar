@@ -1,4 +1,5 @@
 body {
+  background-color: black;
   font-family: "Nunito", sans-serif;
   font-size: small;
   /* user-select: none; */
@@ -24,6 +25,7 @@ p {
 
 #cardContainer {
   display: grid;
+  padding-top: 10px;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
@@ -111,8 +113,10 @@ button:hover {
   transition: 0.5s linear;
   position: sticky;
    width: 40%; 
+   height: 100%;
    box-shadow: 0 2px 2px rgba(255, 255, 255, 0.5);
    transition: 0.5s linear;
+   z-index: 2;
 }
 
 .cart-header {
@@ -141,8 +145,8 @@ cursor: pointer;
 .item-container {
   background-color: rgb(255, 255, 255);
   /* height: 75vh; */
-  max-height: 70vh;
-  min-height: 70vh;
+  max-height: 63vh;
+  min-height: 63vh;
   overflow-y: auto;
 }
 .item{
@@ -194,7 +198,7 @@ border-radius: 2px;
   display: flex;
   justify-content: space-between;
 }
-.payBtn {
+#payBtn {
   border: none;
   background-color: white;
   color: black;
@@ -206,7 +210,7 @@ border-radius: 2px;
   font-size: larger;
   transition: 0.3s;
 }
-.payBtn:hover{
+#payBtn:hover{
  transform: scale(1.03,1.03);
  font-size:larger ;
 }
@@ -263,3 +267,4 @@ border-radius: 2px;
     grid-auto-rows: minmax(200px, auto);
   }
 }
+ 

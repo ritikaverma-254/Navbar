@@ -18,34 +18,39 @@
   </head>
   <body>
     <nav>
-      
       <div class="wrapper">
-
         <!-- hamburger icon-->
-        <input type="checkbox" id="check" hidden/>
+        <input type="checkbox" id="check" hidden />
         <div class="btn_one">
           <label for="check" style="color: rgb(245, 243, 243)">
             <i class="fa-solid fa-bars"></i>
           </label>
         </div>
 
-         <!-- Sidebar -->
-         <div id="menu1">
-            <div class="cancelBtn">
-               <label for="check">
-                 <i class="fa-solid fa-xmark" style="color: black;"></i>
-               </label>
-             </div>
+        <!-- Sidebar -->
+        <div id="menu1">
+          <div class="cancelBtn">
+            <label for="check">
+              <i class="fa-solid fa-xmark" style="color: black"></i>
+            </label>
+          </div>
 
-            <ul>
-              <li><a href="#home">Home</a></li>
+          <ul>
+            <li><a href="#home">Home</a></li>
 
-              <li><a href="#about">About<i class="fa fa-caret-down" style="padding: 5px;"></i></a> </li>
-              <li > <a href="/products.html">Products<i class="fa fa-caret-down" style="padding: 5px;"></i></a></li>
-              <li><a href="#contact">Contact</a></li>
-           </ul>
-         </div>
-      
+            <li>
+              <a href="#about"
+                >About<i class="fa fa-caret-down" style="padding: 5px"></i
+              ></a>
+            </li>
+            <li>
+              <a href="#products"
+                >Products<i class="fa fa-caret-down" style="padding: 5px"></i
+              ></a>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
 
         <!-- top navbar -->
         <div id="menu2">
@@ -53,7 +58,9 @@
             <li><a href="#home">Home</a></li>
 
             <li class="dropdownA">
-              <a href="#about">About<i class="fa fa-caret-down" style="padding: 5px;"></i></a> 
+              <a href="#about"
+                >About<i class="fa fa-caret-down" style="padding: 5px"></i
+              ></a>
               <div class="dropdown-about">
                 <a href="#">Link1</a>
                 <a href="#">Link1</a>
@@ -61,10 +68,11 @@
             </li>
 
             <li class="dropdownB">
-              <a href="#">Products<i class="fa fa-caret-down" style="padding: 5px;"></i></a>
-              <div class="dropdown-content" >
-                <a href="/products.html">Products</a>
-              
+              <a href="#"
+                >Products<i class="fa fa-caret-down" style="padding: 5px"></i
+              ></a>
+              <div class="dropdown-content">
+                <a href="./products.html">Products</a>
               </div>
             </li>
 
@@ -76,9 +84,10 @@
           <button id="signUp">Sign up</button>
           <button id="logIn">Log in</button>
         </div>
-    </div>
+      </div>
     </nav>
 
-    <h1 >Welcome !</h1>
+    <div id="content">Welcome !</div>
+    <script src="script.js"></script>
   </body>
 </html>

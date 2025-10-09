@@ -1,3 +1,13 @@
+fetch('index.html')
+.then(res=> res.text())
+.then(data=>{
+     const parser = new DOMParser();
+    const html = parser.parseFromString(data, 'text/html');
+    const nav = html.querySelector('nav');
+    document.getElementById('navbar').innerHTML = nav.outerHTML;
+})
+
+
 let productsData = [];
 let cartBar = document.querySelector("#cart");
 let itemContainer = document.querySelector(".item-container");
@@ -23,7 +33,7 @@ function displayProducts(productsData) {
   productsData.map((el) => {
     let card = document.createElement("div");
     card.classList.add("card");
-
+    // card.setAttribute('id',`${el.id}`);
     card.innerHTML += `
      <div class="imgContainer">
           <img src="${el.images[0]}" alt="image" />
@@ -37,7 +47,7 @@ function displayProducts(productsData) {
           </div>
           <div class="bottom">
             <div class="price">$${el.price}</div>
-            <button onclick="addToCart(event, ${el.id});" id="btn${el.id}" class="cartBtn btn${el.id} ">Add to cart</button>
+            <button onclick="addToCart(event, ${el.id});" id="${el.id}" class="cartBtn">Add to cart</button>
           </div>
             <div class="rating">
                 <div class="star">
@@ -54,13 +64,6 @@ function displayProducts(productsData) {
   });
 }
 
-let myCollection = document.querySelectorAll('.cartBtn'); // querySelectorAll returns a NodeList, which is iterable.
-console.log(myCollection);
-const btnArray = Array.from(myCollection);
-console.log(btnArray);
-
-btnArray.forEach(element => {
-});
 
 
 function rating(card, el) {
@@ -109,26 +112,24 @@ function disableBtn(event, id) {
       event.target.style.backgroundColor = "grey";
       event.target.disabled = true;
     }
-    // else{
-    //   event.target.disabled = false;
-    //   event.target.backgroundColor = 'black'; 
-    // }
   });
 }
 
-// function enableBtn(event,id){
-//   console.log(event.target);
-//   cart.forEach(el=>{
-//     if(el.id==id){
-      
-//     }
-//   })
-// }
 function displayCart() {
   itemContainer.innerHTML = "";
   displayTotalPrice();
   if (!cart.length) {
     itemContainer.textContent = "Cart is Empty!";
+      let payBtn = document.getElementById('payBtn');
+      console.log(payBtn);
+      payBtn.disabled = true;
+      payBtn.style.backgroundColor = 'rgba(248, 243, 243, 0.29)';
+      payBtn.style.color = 'rgba(9, 9, 9, 0.7)';
+
+  }else{
+    payBtn.disabled = false;
+      payBtn.style.backgroundColor = 'rgba(255, 255, 255)';
+      payBtn.style.color = 'rgb(9, 9, 9)';
   }
   cart.forEach((item) => {
     itemContainer.innerHTML += `<div class="item">
@@ -148,9 +149,9 @@ function displayCart() {
                 $${item.price}
              </div>
              <div class="totalItemQty">
-               <button class="minusBtn" onclick="remove(event,${item.id})">-</button>
-               <span class="itemQty">${item.addedQty}</span>
-               <button class="plusBtn" onclick="add(event,${item.id})">+</button>
+               <button class="minusBtn" id="minus_${item.id}" onclick="remove(event,${item.id})">-</button>
+               <span class="itemQty" id="item_${item.id}">${item.addedQty}</span>
+               <button class="plusBtn" id="add_${item.id}" onclick="add(event,${item.id})">+</button>
              </div>
            </div>
           </div>
@@ -181,11 +182,16 @@ function displayTotalPrice() {
 
 function deleteItem(itemId) {
   console.log(itemId);
-  const data=document.getElementById(itemId);
-  console.log(data);
   cart = cart.filter((i) => i.id != itemId);
   console.log(cart);
   displayCart();
+
+let item = productsData.find(i=> i.id == itemId);
+console.log(item)
+let btn = document.getElementById(item.id)
+console.log(btn);
+btn.style.backgroundColor = 'black';
+btn.disabled = false;
  
 }
 function cancel() {
@@ -196,11 +202,16 @@ function cancel() {
 function remove(event,id) {
   console.log("remove");
   console.log(event.target);
+
   cart.forEach((el) => {
-    if (el.id == id && el.addedQty != 1) {
-      el.addedQty -= 1;
+    if (el.id == id && el.addedQty!=1) {
+     $(document).find('#item_'+id).html(el.addedQty -= 1);
+     $(document).find('#add_'+ id).prop('disabled',false)
+      // event.target.disabled = false;
     } else {
-      event.target.disabled = true;
+        console.dir(event.target,"from minus button");
+      // event.target.disabled = true;
+      $(document).find('#minus_'+ id).prop('disabled',true);
     }
   });
 
@@ -209,18 +220,37 @@ function remove(event,id) {
       item.stock += 1;
     }
   });
-  displayCart();
+ 
   // console.log(productsData);
   console.log(cart);
 }
 
 function add(event,id) {
   console.log("add");
-  cart.forEach((el) => {
+   cart.forEach((el) => {
+    if (el.id == id && el.stock != 0) {
+     $(document).find('#item_' + id).html(el.addedQty+=1);
+    $(document).find('#minus_'+ id).prop('disabled',false);
+    }else {
+      // el.stock = 0;
+      console.log(event.target,"inside");
+      // event.target.disabled = true;
+      $(document).find('#add_'+ id).prop('disabled',true)
+    }
+  });
+    productsData.forEach((item) => {
+    if (item.id == id && item.stock != 0) {
+      item.stock -= 1;
+    }
+  });
+  
+  /*cart.forEach((el) => {
     if (el.id == id && el.stock != 0) {
       el.addedQty += 1;
+      displayCart();
     } else {
       // el.stock = 0;
+      console.log(event.target,"inside");
       event.target.disabled = true;
     }
   });
@@ -228,8 +258,13 @@ function add(event,id) {
     if (item.id == id && item.stock != 0) {
       item.stock -= 1;
     }
-  });
+  });*/
   console.log(productsData);
   console.log(cart);
-  displayCart();
+  
+}
+
+
+function pay(){
+  event.target.style.backgroundColor = 'rgba(107, 157, 214, 1)';
 }

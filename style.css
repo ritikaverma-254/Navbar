@@ -1,21 +1,18 @@
 body {
-  /* background-color: rgb(40, 38, 38);
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.5); */
-  /* background-image: url("welcome.webp"); */
-  /* background-size: cover; */
-  
   background-color: black ;
   font-weight: 400;
   user-select: none;
-  /* text-align: center; */
+
 }
-h1{
-  margin-top: 8rem;
-  font-size: 6rem;
+#content{
+  /* margin-top: 8rem; */
+  /* font-size: 6rem;
    font-family: cursive;
    font-weight: 600;
   color: rgb(123, 87, 148);
-  text-align: center;
+  text-align: center; */
+  width: 100%;
+  
 }
 
 .wrapper {
